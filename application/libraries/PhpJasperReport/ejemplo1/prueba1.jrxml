@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba1" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a37221a9-fb09-42fc-9868-17ab6e637093">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PostGresSqlPrueba"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id" class="java.lang.Integer">
+		<parameterDescription><![CDATA[es el id enviado]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[select nombres, paterno, materno, id_usuario
+from usuario 
+where id_usuario = $P{id} 
+limit 1;]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombres"/>
+	</field>
+	<field name="paterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="paterno"/>
+	</field>
+	<field name="materno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="materno"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="10" width="230" height="30" uuid="1a039d55-dbac-4006-8b0c-f74560811121"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PRUEBA CON PHP PARA 
+					GENERAR REPORTES CON JASPER REPORTS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="190" y="35" width="141" height="31" uuid="645307a1-d924-42f9-a9ed-f2f3a477af85"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="35" width="200" height="30" uuid="cf56617e-254a-4acc-b6b0-9d933b92e4d1"/>
+				<textFieldExpression><![CDATA[$F{paterno}+"-"+$F{materno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
